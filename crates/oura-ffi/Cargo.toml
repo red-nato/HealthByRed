@@ -1,0 +1,14 @@
+[package]
+name = "oura-ffi"
+description = "C-ABI surface over the shared analysis core, for the iOS/native clients"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[lib]
+# staticlib → liboura_ffi.a to link into the iOS app; cdylib is handy for desktop tests.
+crate-type = ["staticlib", "lib"]
+
+[dependencies]
+oura-analysis = { git = "https://github.com/Th0rgal/open_oura", rev = "bd2f1508fbd571b7742b56c0bfd32d8f16e29585" }

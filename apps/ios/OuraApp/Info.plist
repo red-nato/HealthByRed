@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>Health by Red</string>
+	<key>CFBundleExecutable</key>
+	<string>OuraApp</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleName</key>
+	<string>Health by Red</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(MARKETING_VERSION)</string>
+	<key>CFBundleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>MinimumOSVersion</key>
+	<string>17.0</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Health by Red connects to your Oura ring over Bluetooth to read your health data on-device.</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Health by Red connects to your Oura ring over Bluetooth to read your health data on-device.</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Health by Red can read selected Apple Health data to compare it with your ring metrics on-device.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Health by Red uses write access only when you choose to export ring-derived sleep, activity, and heart measurements to Apple Health.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>bluetooth-central</string>
+	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>LaunchBackground</string>
+	</dict>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,35 @@
+/target/
+/.venv/
+/.env
+*.db
+*.sqlite
+*.key
+*.hex
+captures/
+reverse/
+dna/files/*
+!dna/files/.gitkeep
+dna/scores/*
+!dna/scores/.gitkeep
+
+# Proprietary/decrypted ML models and mobile exports.
+notes/models/
+*.pt
+*.ptl
+*.pth
+*.onnx
+*.mlmodel
+
+# iOS build artifacts generated locally by xcodegen / build scripts.
+apps/ios/OuraApp/OuraApp.xcodeproj/
+apps/ios/OuraCore.xcframework/
+apps/ios/libtorch-xcframeworks/
+apps/ios/.libtorch-frameworks-build/
+apps/ios/OuraApp/build/
+apps/ios/build/
+apps/ios/DerivedData/
+local/
+
+# Runtime state the CLI writes next to the DB (personal profile, ring feature modes).
+profile.json
+feature_modes.json

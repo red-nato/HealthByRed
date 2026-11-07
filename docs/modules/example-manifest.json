@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "community.example.ring",
+  "name": "Example wearable",
+  "version": "1.0.0",
+  "author": "Community",
+  "description": "Example metadata for a future wearable integration.",
+  "permissions": ["bluetooth", "local-storage"]
+}

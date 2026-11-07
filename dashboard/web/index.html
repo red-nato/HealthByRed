@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <script>try { const theme = localStorage.getItem("health.appearance.v1"); if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme; } catch (_) {}</script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%230d9488'/%3E%3Ccircle cx='16' cy='16' r='6' fill='none' stroke='%23ffffff' stroke-width='4' opacity='.55'/%3E%3C/svg%3E" />
+  <title>Health — Your health, closer</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="health-app" data-section="home">
+  <svg width="0" height="0" class="gradient-defs" aria-hidden="true"><defs><linearGradient id="settings-brand-blend" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--home-accent)"/><stop offset=".48" stop-color="var(--settings-accent)"/><stop offset="1" stop-color="var(--ring-accent)"/></linearGradient></defs></svg>
+  <div class="wrap app-shell">
+    <header class="top app-top">
+      <a class="brand" href="#home" aria-label="Health by Red, Home"><svg class="brand-ring" viewBox="0 0 25 25" fill="none" aria-hidden="true"><circle cx="12.5" cy="12.5" r="10.5" stroke="currentColor" stroke-width="1.6"/><circle cx="12.5" cy="12.5" r="8.1" stroke="currentColor" stroke-width="1.1"/><circle cx="18.157" cy="18.157" r="1.65" fill="currentColor"/><circle cx="12.500" cy="20.500" r="1.65" fill="currentColor"/><circle cx="6.843" cy="18.157" r="1.65" fill="currentColor"/></svg><span class="word">Health<span class="brand-by"> by Red<span class="brand-dot">.</span></span></span></a>
+      <div class="top-status"><span class="status-dot"></span><span>Your health, closer</span></div>
+    </header>
+
+    <main>
+      <section id="view-home" class="app-view" data-app-view="home" aria-labelledby="home-title">
+        <div class="screen-heading"><div><p class="screen-date" id="today-date"></p><h1 id="home-title">Home</h1></div><button class="round-control" id="history-btn" aria-label="Open history" disabled><svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M8 3v4m8-4v4M4 11h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></div>
+        <button class="home-device" data-go="ring"><div class="home-device-copy"><span class="micro-label">YOUR RING</span><strong>Oura Ring</strong><span id="home-source-state">A connection you choose</span></div><img src="/ring-product.png" alt="" class="home-ring-image"><span class="device-arrow">↗</span></button>
+        <section class="wellness-card" aria-label="Your latest sleep summary">
+          <div class="wellness-body">
+            <div class="wellness-score"><div class="wellness-top"><span class="micro-label">YOUR RHYTHM</span><span class="wellness-date" id="overview-date">No records yet</span></div><strong id="overview-score">—</strong><span id="overview-label">Sleep score</span><progress id="overview-progress" value="0" max="100" aria-label="Sleep score"></progress><span class="source-link"><span aria-hidden="true">↙</span> From your ring</span></div>
+            <span class="wellness-portrait ring-placement" data-ring-section="home" aria-hidden="true"><img src="/ring-red.png" alt=""></span>
+          </div>
+          <div class="source-trace" aria-hidden="true"></div>
+          <div class="wellness-stats"><div><span>Time in bed</span><strong id="overview-sleep">—<small> h</small></strong></div><div><span>Steps</span><strong id="overview-steps">—</strong></div></div>
+          <div class="overview-actions"><button id="overview-sleep-report">Sleep <span aria-hidden="true">›</span></button><button id="overview-activity-report">Activity <span aria-hidden="true">›</span></button></div>
+          <div class="wellness-empty"><div class="wellness-empty-hero"><div><span class="micro-label">YOUR HEALTH, CLOSER</span><h2>Your rhythm.<br>Ready to be<br>revealed.</h2></div><span class="wellness-portrait ring-placement" data-ring-section="home"><img src="/ring-red.png" alt="Black smart ring with a red sensor"></span></div><p>Connect your ring to bring your sleep, movement and vital signs into focus.</p><button data-go="ring">Set up my ring <span aria-hidden="true">↗</span></button></div>
+          <p id="digest" class="digest skeleton skeleton-text">Your data will appear after your first sync.</p>
+        </section>
+        <div class="capability-strip" id="capability-strip" hidden><div><span class="ic" style="--i:url(/icons/moon.svg)"></span><span>Sleep</span></div><div><span class="ic" style="--i:url(/icons/heartbeat.svg)"></span><span>Vital signs</span></div><div><span class="ic" style="--i:url(/icons/person-simple-run.svg)"></span><span>Movement</span></div></div>
+        <details id="data-load-details" class="load-details" hidden><summary>Could not load local history</summary><p id="data-load-error"></p><button id="data-load-retry" class="btn-text">Try again</button></details>
+        <div id="vitals-stack" class="vitals-stack"><div class="section-caption" id="vitals-heading"><h2>Your vital signs</h2><span>Latest readings</span></div>
+        <section class="tiles" id="tiles" aria-label="Health measurements"><article class="tile skeleton"></article><article class="tile skeleton"></article><article class="tile skeleton"></article><article class="tile skeleton"></article></section></div>
+        <div class="dashboard-grid">
+          <div class="dashboard-main">
+            <section class="panel" id="day-panel"><div class="panel-head"><h2><span class="ic" style="--i:url(/icons/moon.svg)"></span>Your day in detail</h2><div class="legend" id="sleep-legend" hidden><span><i class="sw deep"></i>Deep</span><span><i class="sw light"></i>Light</span><span><i class="sw rem"></i>REM</span><span><i class="sw wake"></i>Awake</span></div></div><div id="day" class="day"><div class="skeleton skeleton-block"></div></div></section>
+            <div class="cols-2" id="clinical-grid"><section class="panel" id="cardio-panel"><div class="panel-head"><h2><span class="ic" style="--i:url(/icons/heartbeat.svg)"></span>Cardiovascular health</h2></div><div id="cardio" class="cardio-body"></div></section><section class="panel" id="spo2-panel"><div class="panel-head"><h2><span class="ic" style="--i:url(/icons/wind.svg)"></span>Blood oxygen</h2></div><div id="spo2" class="spo2-body"></div></section></div>
+          </div>
+          <aside class="dashboard-side"><section class="panel" id="sleep-debt-panel"><div class="panel-head"><h2><span class="ic" style="--i:url(/icons/moon.svg)"></span>Sleep balance</h2></div><div id="sleep-debt" class="sleep-debt"></div></section><section class="panel" id="illness-panel"><div class="panel-head"><h2><span class="ic" style="--i:url(/icons/heartbeat.svg)"></span>Your vital signs</h2></div><div id="illness" class="illness"></div></section></aside>
+        </div>
+      </section>
+
+      <section id="view-ring" class="app-view ring-view" data-app-view="ring" hidden aria-labelledby="ring-screen-title">
+        <div class="screen-heading"><div><p class="screen-date">CLOSE TO YOU</p><h1 id="ring-screen-title">Your ring<span>.</span></h1></div><span id="batt" class="batt" title="Last synced battery level" hidden></span></div>
+        <div class="ring-product-stage"><span id="ring-module-state" class="source-state">Optional module</span><span class="ring-product-image ring-placement" data-ring-section="ring"><img src="/ring-product.png" alt="Black smart ring with inner sensors"></span><div class="ring-product-caption"><h2 id="ring-title">Oura Ring</h2><p id="ring-source-detail">You choose when to connect.</p></div><p class="illustration-note">Product image · not a live reading</p></div>
+        <div class="ring-primary-actions"><button id="sync-btn" class="action sync-action"><span class="ic" style="--i:url(/icons/arrows-clockwise.svg)"></span><span id="sync-label">Enable module</span></button><button id="ring-manage-btn" class="action">Manage module <span>↗</span></button></div>
+        <section class="panel" id="device-panel"><div class="panel-head"><h2><span class="ic" style="--i:url(/icons/cpu.svg)"></span>Your device</h2></div><div id="device" class="device"><p class="ring-empty-copy">Connect your ring to see its battery, firmware and records.</p></div></section>
+      </section>
+
+      <section id="view-settings" class="app-view settings-view" data-app-view="settings" hidden aria-labelledby="settings-title">
+        <div class="screen-heading"><div><p class="screen-date">MADE FOR YOU</p><h1 id="settings-title">Settings<span>.</span></h1></div><span class="settings-orb" aria-hidden="true">✦</span></div>
+        <div class="settings-identity"><div class="settings-identity-copy"><span class="micro-label">YOUR SPACE</span><h2>Make it yours.</h2><p>A little balance.<br>Your own rhythm.</p></div><span class="settings-ring-image ring-placement" data-ring-section="settings"><img src="/ring-off.png" alt="Smart ring with its sensors off"></span></div>
+        <section class="settings-group"><h2>You</h2><button id="profile-btn" class="setting-row"><span class="setting-icon"><span class="ic" style="--i:url(/icons/user.svg)"></span></span><span><strong>My profile</strong><small>Personal details and measurements</small></span><i>›</i></button></section>
+        <section class="settings-group"><h2>Application</h2><label class="setting-row appearance-setting" for="theme-select"><span class="setting-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 14.4A8.8 8.8 0 0 1 9.6 4a8.8 8.8 0 1 0 10.4 10.4Z" stroke="currentColor" stroke-width="1.6"/></svg></span><span><strong>Appearance</strong><small>Find your light</small></span><select id="theme-select" aria-label="Appearance"><option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option></select></label><button id="modules-btn" class="setting-row"><span class="setting-icon">▦</span><span><strong>Modules</strong><small>Your sources and permissions</small></span><i>›</i></button></section>
+        <section class="settings-group"><h2>Ring</h2><button class="setting-row" data-go="ring"><span class="setting-icon"><svg class="" viewBox="0 0 25 25" fill="none" aria-hidden="true"><circle cx="12.5" cy="12.5" r="10.5" stroke="currentColor" stroke-width="1.6"/><circle cx="12.5" cy="12.5" r="8.1" stroke="currentColor" stroke-width="1.1"/><circle cx="18.157" cy="18.157" r="1.65" fill="currentColor"/><circle cx="12.500" cy="20.500" r="1.65" fill="currentColor"/><circle cx="6.843" cy="18.157" r="1.65" fill="currentColor"/></svg></span><span><strong>Ring settings</strong><small>Connection, sensors and data</small></span><i>›</i></button></section>
+        <section class="settings-group"><h2>More about you</h2><a id="dna-link" class="setting-row" href="/dna"><span class="setting-icon"><span class="ic" style="--i:url(/icons/dna.svg)"></span></span><span><strong>Genetics</strong><small>Explore my DNA data</small></span><i>↗</i></a><a id="blood-link" class="setting-row" href="/blood"><span class="setting-icon"><span class="ic" style="--i:url(/icons/drop.svg)"></span></span><span><strong>Lab tests</strong><small>My lab results</small></span><i>↗</i></a></section>
+        <div class="settings-privacy"><span class="status-dot"></span><p>Your measurements are processed on this device. Review connections and permissions in Modules.</p></div>
+      </section>
+    </main>
+    <footer class="foot"><span>Health by Red<span class="brand-dot">.</span> · Your health, your rhythm.</span><span id="foot-meta"></span></footer>
+  </div>
+  <nav class="app-navbar" aria-label="Main navigation"><button data-nav="home" class="nav-item active" aria-current="page"><svg viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m5 12 9-7 9 7v11h-7v-7h-4v7H5V12Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><span>Home</span></button><button data-nav="ring" class="nav-item"><svg class="" viewBox="0 0 25 25" fill="none" aria-hidden="true"><circle cx="12.5" cy="12.5" r="10.5" stroke="currentColor" stroke-width="1.6"/><circle cx="12.5" cy="12.5" r="8.1" stroke="currentColor" stroke-width="1.1"/><circle cx="18.157" cy="18.157" r="1.65" fill="currentColor"/><circle cx="12.500" cy="20.500" r="1.65" fill="currentColor"/><circle cx="6.843" cy="18.157" r="1.65" fill="currentColor"/></svg><span>Ring</span></button><button data-nav="settings" class="nav-item"><svg viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m11 4-1 3-3 1-3 3 2 3-1 4 4 2 2 4h5l2-4 4-2-1-4 2-3-3-3-3-1-1-3h-5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="14" cy="14" r="4" stroke="currentColor" stroke-width="1.6"/></svg><span>Settings</span></button></nav>
+
+  <dialog id="modules-dialog" class="dialog modules-dialog" aria-labelledby="modules-title">
+    <div class="modules-content">
+      <div class="modules-title-row"><div><span class="eyebrow">YOUR HEALTH, YOUR SOURCES</span><h3 id="modules-title">Your modules</h3></div><button id="modules-close" class="btn-text" aria-label="Close modules">✕</button></div>
+      <p class="dialog-sub">Choose your health sources. Importing a manifest lets you review its metadata; it does not run code or grant connections.</p>
+      <article class="module-card">
+        <div class="module-icon" aria-hidden="true">◉</div><div class="module-info"><h4>Oura Ring <span>Included</span></h4><p>Bluetooth sync through the local open_oura connector.</p><div class="permission-tags"><span>Bluetooth</span><span>Local storage</span></div></div>
+        <label class="module-toggle"><input id="oura-module-toggle" type="checkbox" aria-label="Enable module Oura Ring"><span></span></label>
+      </article>
+      <p class="module-scope">This preference controls connections from this dashboard. The connector remains included in the local tool and your saved history is preserved.</p>
+      <div id="imported-modules"></div>
+      <div class="module-import"><div><h4>Add a manifest</h4><p>JSON metadata only · 64 KB maximum</p></div><button id="module-import-btn" class="btn-primary">Import JSON</button><input id="module-file" type="file" accept="application/json,.json" hidden></div>
+      <p id="module-import-status" class="module-import-status" role="status" aria-live="polite"></p>
+      <details class="module-format"><summary>Format & trust</summary><p>Required fields: schemaVersion (1), id, name, version, author, description and permissions. Declared permissions are not granted or verified on import. Loading third-party code requires a future isolated implementation.</p></details>
+      <details class="module-format module-connections"><summary>App connections</summary><p>Oura connects over Bluetooth and stores data on this device. Genetics downloads public definitions when requested; genome processing stays local. Lab PDFs are analyzed here. This description is not a security audit.</p></details>
+      <nav class="module-local-tools" aria-label="Other local tools"><span>More in your space</span><a href="/dna">Genetics ↗</a><a href="/blood">Lab tests ↗</a></nav>
+    </div>
+  </dialog>
+
+  <!-- profile editor -->
+  <dialog id="profile-dialog" class="dialog">
+    <form id="profile-form" method="dialog">
+      <h3>My profile</h3>
+      <p class="dialog-sub">These details adjust cardiovascular estimates and are saved on this device.</p>
+      <div class="field-row">
+        <div class="field">
+          <label for="f-sex">Sex at birth</label>
+          <select id="f-sex" name="sex">
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            <option value="O">Other</option>
+          </select>
+        </div>
+        <div class="field"><label for="f-age">Age</label><input id="f-age" name="age" type="number" min="0" max="120" step="1" /></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label for="f-height">Height (m)</label><input id="f-height" name="height_m" type="number" min="1" max="2.3" step="0.01" /></div>
+        <div class="field"><label for="f-weight">Weight (kg)</label><input id="f-weight" name="weight_kg" type="number" min="20" max="250" step="1" /></div>
+      </div>
+      <div class="dialog-actions">
+        <button type="button" id="profile-cancel" class="btn-text">Cancel</button>
+        <button type="submit" id="profile-save" class="btn-primary">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- full-page sleep / activity report (shown over the dashboard) -->
+  <div id="page" class="page" hidden></div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
