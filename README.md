@@ -7,7 +7,7 @@ HRV and long-term trends. Built with SwiftUI and Rust, with direct Bluetooth syn
 and on-device analysis.
 
 <p align="center">
-  <img src="docs/screenshots/cinematic-home-desktop-dark.png" width="32%" alt="Desktop Layout" />
+  <img src="docs/screenshots/cinematic-home-desktop-dark.png" alt="Desktop Layout" />
 </p>
 
 ## Get started
