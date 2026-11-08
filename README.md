@@ -1,22 +1,14 @@
-# Open Health
+# Health By Red
 
-Your health data, on your own devices.
+Your health data, Free. As It should be (and really yours).
 
 A native iOS app and local web dashboard for Oura: sleep, activity, heart rate,
 HRV and long-term trends. Built with SwiftUI and Rust, with direct Bluetooth sync
 and on-device analysis.
 
 <p align="center">
-  <img src="docs/screenshots/overview.png" width="32%" alt="Daily overview with sleep, activity and vital trends" />
-  <img src="docs/screenshots/sleep.png" width="32%" alt="Sleep report with sleep stages and overnight signals" />
-  <img src="docs/screenshots/activity.png" width="32%" alt="Activity report with movement, steps and workouts" />
+  <img src="docs/screenshots/cinematic-home-desktop-dark.png" width="32%" alt="Desktop Layout" />
 </p>
-
-<p align="center"><sub>iOS · Overview, sleep and activity · Real data from a Ring 5, July 2026</sub></p>
-
-The web dashboard also brings together local blood reports and DNA analysis.
-Ring communication and portable algorithms are powered by
-[open_oura](https://github.com/Th0rgal/open_oura).
 
 ## Get started
 
